@@ -13,4 +13,8 @@
         android:id="@+id/menu_3"
         android:title="Menu 3"
         tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/menu_4"
+        android:title="Menu 4"
+        tools:ignore="HardcodedText" />
 </menu>

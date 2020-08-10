@@ -11,26 +11,26 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
-    private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.activity_main);
+        DrawerLayout drawerLayout = findViewById(R.id.activity_main);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -45,20 +45,23 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.menu_3:
                         Toast.makeText(MainActivity.this, "Menu 3", Toast.LENGTH_SHORT).show();
                         break;
+                    case R.id.menu_4:
+                        Toast.makeText(MainActivity.this, "Menu 4", Toast.LENGTH_SHORT).show();
+                        break;
                     default:
                         return true;
                 }
                 return true;
             }
+
         });
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (actionBarDrawerToggle.onOptionsItemSelected(item))
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
-
+        }
         return super.onOptionsItemSelected(item);
     }
 }
