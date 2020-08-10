@@ -1,67 +1,59 @@
 package com.rkleib.android.playground;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
 
-import com.google.android.material.navigation.NavigationView;
-
-import java.util.Objects;
+import com.google.android.material.snackbar.Snackbar;
+import com.rkleib.android.playground.main_layout.MainDrawerActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActionBarDrawerToggle actionBarDrawerToggle;
+    private View rootView;
+    private CardView mCvNavigationDrawer;
+    private CardView mCvNormalLayout;
+    private CardView mCvBottomMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        rootView = findViewById(android.R.id.content);
+        mCvNavigationDrawer = findViewById(R.id.cv_navigation_drawer);
+        mCvNormalLayout = findViewById(R.id.cv_normal_layout);
+        mCvBottomMenu = findViewById(R.id.cv_bottom_menu);
+        handleOnClick();
+    }
 
-        DrawerLayout drawerLayout = findViewById(R.id.activity_main);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
-
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
-        NavigationView navigationView = findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+    private void handleOnClick() {
+        mCvBottomMenu.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int id = menuItem.getItemId();
-                switch (id) {
-                    case R.id.menu_1:
-                        Toast.makeText(MainActivity.this, "Menu 1", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.menu_2:
-                        Toast.makeText(MainActivity.this, "Menu 2", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.menu_3:
-                        Toast.makeText(MainActivity.this, "Menu 3", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.menu_4:
-                        Toast.makeText(MainActivity.this, "Menu 4", Toast.LENGTH_SHORT).show();
-                        break;
-                    default:
-                        return true;
-                }
-                return true;
+            public void onClick(View view) {
+                comingSoon();
             }
+        });
 
+        mCvNormalLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                comingSoon();
+            }
+        });
+
+        mCvNavigationDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainDrawerActivity.class);
+                startActivity(intent);
+            }
         });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+    private void comingSoon() {
+        Snackbar.make(rootView, "Coming Soon", Snackbar.LENGTH_LONG)
+                .show();
     }
 }
