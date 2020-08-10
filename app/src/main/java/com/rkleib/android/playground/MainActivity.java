@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.rkleib.android.playground.main_layout.MainBottomActivity;
 import com.rkleib.android.playground.main_layout.MainDrawerActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         mCvBottomMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                comingSoon();
+                Intent intent = new Intent(MainActivity.this, MainBottomActivity.class);
+                startActivity(intent);
             }
         });
 

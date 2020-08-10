@@ -2,4 +2,6 @@
     <string name="app_name">Playground</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="page_1">page 1</string>
+    <string name="page_2">page 2</string>
 </resources>
