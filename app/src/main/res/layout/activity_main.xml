@@ -43,6 +43,7 @@
                     android:layout_height="100dp"
                     app:lottie_loop="true"
                     app:lottie_autoPlay="true"
+                    app:lottie_speed="0.8"
                     app:lottie_fileName="anim_navigation_drawer.json" />
 
                 <TextView
