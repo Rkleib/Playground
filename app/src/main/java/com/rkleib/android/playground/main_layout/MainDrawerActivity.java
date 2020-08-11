@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -11,31 +12,32 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.rkleib.android.playground.MainActivity;
 import com.rkleib.android.playground.R;
 
-import java.util.Objects;
 
 public class MainDrawerActivity extends AppCompatActivity {
 
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private boolean isCollapsed = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_drawer);
         handleSideBar();
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        handleCollapsingToolbar();
     }
 
     private void handleSideBar() {
@@ -57,11 +59,16 @@ public class MainDrawerActivity extends AppCompatActivity {
 
             @Override
             public void onDrawerOpened(@NonNull View drawerView) {
+                getWindow().getDecorView().setSystemUiVisibility(0);
             }
 
             @Override
             public void onDrawerClosed(@NonNull View drawerView) {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                if (isCollapsed) {
+                    getWindow().getDecorView().setSystemUiVisibility(0);
+                } else {
+                    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                }
             }
 
             @Override
@@ -97,6 +104,32 @@ public class MainDrawerActivity extends AppCompatActivity {
                         return true;
                 }
                 return true;
+            }
+        });
+    }
+
+    private void handleCollapsingToolbar() {
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.colapsing_toolbar);
+        AppBarLayout appBar = (AppBarLayout) findViewById(R.id.app_bar);
+
+        collapsingToolbar.setTitle("Welcome");
+        collapsingToolbar.setExpandedTitleTextAppearance(R.style.ExpandedAppBar);
+        collapsingToolbar.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar);
+
+        appBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+
+                if (Math.abs(verticalOffset) - appBarLayout.getTotalScrollRange() == 0) {
+                    // - expanded
+                    isCollapsed = false;
+                    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                } else {
+                    // -collapsed
+                    isCollapsed = true;
+                    getWindow().getDecorView().setSystemUiVisibility(0);
+                }
             }
         });
     }
