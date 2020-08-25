@@ -22,7 +22,6 @@ import com.rkleib.android.playground.adapter.ExpandableListAdapter;
 
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
