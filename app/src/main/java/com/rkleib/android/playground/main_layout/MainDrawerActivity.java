@@ -12,46 +12,150 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import com.rkleib.android.playground.adapter.ExpandableListAdapter;
+
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.navigation.NavigationView;
+import com.rkleib.android.playground.ExpandedMenuModel;
 import com.rkleib.android.playground.MainActivity;
 import com.rkleib.android.playground.R;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class MainDrawerActivity extends AppCompatActivity {
 
-    private DrawerLayout drawerLayout;
+    private DrawerLayout mDrawerLayout;
+    ExpandableListAdapter mMenuAdapter;
+    ExpandableListView expandableList;
+    List<ExpandedMenuModel> listDataHeader;
+    HashMap<ExpandedMenuModel, List<String>> listDataChild;
     private boolean isCollapsed = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_drawer);
+        mDrawerLayout = findViewById(R.id.main_layout);
+        expandableList = findViewById(R.id.navigation_menu);
+        NavigationView navigationView = findViewById(R.id.navigation_view);
+
+        if (navigationView != null) {
+            setupDrawerContent(navigationView);
+        }
+
+        prepareListData();
+        mMenuAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild, expandableList) {
+        };
+
+        // setting list adapter
+        expandableList.setAdapter(mMenuAdapter);
+
+        expandableList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+                //Log.d("DEBUG", "submenu item clicked");
+                return false;
+            }
+        });
+        expandableList.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView expandableListView, View view, int i, long l) {
+                //Log.d("DEBUG", "heading clicked");
+                return false;
+            }
+        });
+
         handleSideBar();
         handleCollapsingToolbar();
     }
 
-    private void handleSideBar() {
-        drawerLayout = findViewById(R.id.main_layout);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+    private void prepareListData() {
+        listDataHeader = new ArrayList<ExpandedMenuModel>();
+        listDataChild = new HashMap<ExpandedMenuModel, List<String>>();
 
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        ExpandedMenuModel item1 = new ExpandedMenuModel();
+        item1.setIconName("Dialog");
+        item1.setIconImg(R.drawable.ic_menu_profile);
+        // Adding data header
+        listDataHeader.add(item1);
+
+        ExpandedMenuModel item2 = new ExpandedMenuModel();
+        item2.setIconName("heading2");
+        item2.setIconImg(android.R.drawable.ic_delete);
+        listDataHeader.add(item2);
+
+        ExpandedMenuModel item3 = new ExpandedMenuModel();
+        item3.setIconName("heading3");
+        item3.setIconImg(android.R.drawable.ic_delete);
+        listDataHeader.add(item3);
+
+        // Adding child data
+        List<String> dialog = new ArrayList<String>();
+        dialog.add("Dialog Normal");
+
+        List<String> heading2 = new ArrayList<String>();
+        heading2.add("Submenu of item 2");
+        heading2.add("Submenu of item 2");
+        heading2.add("Submenu of item 2");
+
+        listDataChild.put(listDataHeader.get(0), dialog);// Header, Child data
+        listDataChild.put(listDataHeader.get(1), heading2);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void setupDrawerContent(NavigationView navigationView) {
+        //revision: this don't works, use setOnChildClickListener() and setOnGroupClickListener() above instead
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                    }
+                });
+    }
+
+    private void handleSideBar() {
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this, mDrawerLayout, R.string.open, R.string.close);
+
+        mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
 
         ImageView mImvBurger = findViewById(R.id.imv_burger);
 
-        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+        mDrawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
 
@@ -79,11 +183,11 @@ public class MainDrawerActivity extends AppCompatActivity {
         mImvBurger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                drawerLayout.openDrawer(GravityCompat.START);
+                mDrawerLayout.openDrawer(GravityCompat.START);
                 getWindow().getDecorView().setSystemUiVisibility(0);
             }
         });
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        /*navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
@@ -105,7 +209,7 @@ public class MainDrawerActivity extends AppCompatActivity {
                 }
                 return true;
             }
-        });
+        });*/
     }
 
     private void handleCollapsingToolbar() {
