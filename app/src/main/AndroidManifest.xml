@@ -10,8 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".main_layout.MainDrawerActivity"
+            android:name=".dialog.DialogBasicActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/CustomNoActionBar" />
+        <activity
+            android:name=".main_layout.MainDrawerActivity"
+            android:theme="@style/CustomNoActionBarTranslucent" />
         <activity android:name=".main_layout.MainBottomActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

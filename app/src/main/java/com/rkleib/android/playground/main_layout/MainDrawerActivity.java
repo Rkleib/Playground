@@ -22,6 +22,7 @@ import com.rkleib.android.playground.adapter.ExpandableListAdapter;
 
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -29,6 +30,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.rkleib.android.playground.ExpandedMenuModel;
 import com.rkleib.android.playground.MainActivity;
 import com.rkleib.android.playground.R;
+import com.rkleib.android.playground.dialog.DialogBasicActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,8 +67,17 @@ public class MainDrawerActivity extends AppCompatActivity {
 
         expandableList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
-                //Log.d("DEBUG", "submenu item clicked");
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition,
+                                        int childPosition, long childId) {
+                if (groupPosition == 0) {
+                    switch (childPosition) {
+                        case 0:
+                            Intent intent = new Intent(MainDrawerActivity.this, DialogBasicActivity.class);
+                            startActivity(intent);
+                            break;
+                    }
+                }
+
                 return false;
             }
         });
@@ -104,7 +115,7 @@ public class MainDrawerActivity extends AppCompatActivity {
 
         // Adding child data
         List<String> dialog = new ArrayList<String>();
-        dialog.add("Dialog Normal");
+        dialog.add("Dialog Basic");
 
         List<String> heading2 = new ArrayList<String>();
         heading2.add("Submenu of item 2");
