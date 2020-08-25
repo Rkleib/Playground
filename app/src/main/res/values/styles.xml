@@ -12,7 +12,23 @@
         <item name="android:windowBackground">@android:color/white</item>
         <item name="windowActionBar">true</item>
         <item name="windowActionModeOverlay">true</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionModeBackground">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+
+    </style>
+    <!-- #.END THEME APLIKASI -->
+
+    <!-- #.START THEME APLIKASI -->
+    <style name="CustomNoActionBarTranslucent" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="windowActionBar">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="actionModeBackground">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
     <!-- #.END THEME APLIKASI -->
@@ -31,6 +47,22 @@
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- #.START OVERRRIDE ICON TOOLBAR -->
+    <style name="Toolbar" parent="Theme.AppCompat">
+        <item name="homeAsUpIndicator">@drawable/ic_arrow_back</item>
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="actionOverflowButtonStyle">@drawable/ic_more</item>
+        <item name="android:actionOverflowButtonStyle">@drawable/ic_more</item>
+    </style>
+    <!-- #.END OVERRRIDE ICON TOOLBAR -->
+
+    <!-- #.START OVERRRIDE WARNA TITLE TOOLBAR -->
+    <style name="Toolbar.Title" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#CC030303</item>
     </style>
 
 </resources>
