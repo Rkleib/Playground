@@ -77,9 +77,17 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@drawable/bg_navigation_drawer"
-        app:menu="@menu/navigation_menu"
         android:layout_gravity="start"
         app:itemTextColor="@android:color/white"
         app:itemIconTint="@android:color/white"
-        app:headerLayout="@layout/nav_header" />
+        app:headerLayout="@layout/nav_header">
+
+        <ExpandableListView
+            android:id="@+id/navigation_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="192dp"
+            android:background="@drawable/bg_navigation_drawer">
+        </ExpandableListView>
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>
