@@ -6,15 +6,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.rkleib.android.playground.R;
+
+import java.util.Objects;
 
 public class DialogBasicActivity extends AppCompatActivity {
 
@@ -24,6 +30,7 @@ public class DialogBasicActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dialog_basic);
         setupToolbar();
         showAlertDialog();
+        showCustomAlert();
     }
 
     /**
@@ -87,6 +94,51 @@ public class DialogBasicActivity extends AppCompatActivity {
                 Button buttonNegative = alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
                 buttonNegative.setTextColor(ContextCompat.getColor(DialogBasicActivity.this,
                         R.color.colorPrimaryDark));
+            }
+        });
+    }
+
+    private void showCustomAlert() {
+        Button mBtnCustomAlert = findViewById(R.id.btn_custom_alert);
+        mBtnCustomAlert.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(DialogBasicActivity.this);
+                LayoutInflater inflater = getLayoutInflater();
+                View dialogView = inflater.inflate(R.layout.dialog_alert, null);
+
+                alert.setView(dialogView);
+                alert.setCancelable(true);
+                alert.setIcon(R.mipmap.ic_launcher);
+
+                Button btnConfirm = dialogView.findViewById(R.id.btn_confirm);
+                Button btnCancel = dialogView.findViewById(R.id.btn_cancel);
+                TextView tvTitle = dialogView.findViewById(R.id.tv_title);
+                TextView tvMessage = dialogView.findViewById(R.id.tv_message);
+
+                final AlertDialog alertDialog = alert.create();
+                alertDialog.show();
+
+                //- make dialog background transparent so it can be rounded using cardView
+                Objects.requireNonNull(alertDialog.getWindow()).setBackgroundDrawable(
+                        new ColorDrawable(Color.TRANSPARENT));
+
+                btnConfirm.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        View rootView = findViewById(android.R.id.content);
+                        Snackbar.make(rootView, "Button Confirm Clicked", Snackbar.LENGTH_SHORT).show();
+                        alertDialog.dismiss();
+                    }
+                });
+
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        alertDialog.dismiss();
+                    }
+                });
             }
         });
     }
