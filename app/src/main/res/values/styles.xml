@@ -15,7 +15,7 @@
         <item name="actionModeBackground">@color/white</item>
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/white</item>
-        <item name="colorAccent">@color/white</item>
+        <item name="colorAccent">@color/colorPrimary</item>
 
     </style>
     <!-- #.END THEME APLIKASI -->
@@ -28,7 +28,7 @@
         <item name="actionModeBackground">@color/white</item>
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/white</item>
-        <item name="colorAccent">@color/white</item>
+        <item name="colorAccent">@color/colorPrimary</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
     <!-- #.END THEME APLIKASI -->

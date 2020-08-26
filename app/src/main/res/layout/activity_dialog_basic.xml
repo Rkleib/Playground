@@ -52,6 +52,28 @@
             android:textSize="16sp"
             android:background="@drawable/bg_button_outline_white"
             tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btn_custom_selection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Dialog Selection"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:background="@drawable/bg_button_outline_white"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btn_custom_multiple"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Dialog Multiple Selection"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:background="@drawable/bg_button_outline_white"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
 </LinearLayout>
