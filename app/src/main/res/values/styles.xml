@@ -12,9 +12,9 @@
         <item name="android:windowBackground">@android:color/white</item>
         <item name="windowActionBar">true</item>
         <item name="windowActionModeOverlay">true</item>
-        <item name="actionModeBackground">@color/colorPrimary</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="actionModeBackground">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/colorPrimary</item>
 
     </style>
@@ -25,9 +25,9 @@
         <item name="android:windowBackground">@android:color/white</item>
         <item name="windowActionBar">true</item>
         <item name="windowActionModeOverlay">true</item>
-        <item name="actionModeBackground">@color/colorPrimary</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="actionModeBackground">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
@@ -61,8 +61,8 @@
     <!-- #.START OVERRRIDE WARNA TITLE TOOLBAR -->
     <style name="Toolbar.Title" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">15sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">#CC030303</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#CC2E2E2E</item>
     </style>
 
 </resources>

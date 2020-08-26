@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pick your choice"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                tools:ignore="HardcodedText" />
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radio_child_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Item 1"
+                    tools:ignore="HardcodedText" />
+
+                <RadioButton
+                    android:id="@+id/radio_child_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Item 2"
+                    tools:ignore="HardcodedText" />
+
+                <RadioButton
+                    android:id="@+id/radio_child_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Item 3"
+                    tools:ignore="HardcodedText" />
+
+                <RadioButton
+                    android:id="@+id/radio_child_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Item 4"
+                    tools:ignore="HardcodedText" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="21dp"
+                    android:background="@drawable/bg_button_outline_white"
+                    android:gravity="center"
+                    android:paddingStart="19dp"
+                    android:paddingEnd="19dp"
+                    android:text="Cancel"
+                    android:textColor="@android:color/black"
+                    tools:ignore="HardcodedText" />
+
+                <Button
+                    android:id="@+id/btn_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="19dp"
+                    android:layout_marginBottom="21dp"
+                    android:background="@drawable/bg_button_rounded"
+                    android:gravity="center"
+                    android:paddingStart="19dp"
+                    android:paddingEnd="19dp"
+                    android:text="Submit"
+                    android:textColor="@android:color/white"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
