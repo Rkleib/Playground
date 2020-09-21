@@ -29,6 +29,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.rkleib.android.playground.ExpandedMenuModel;
 import com.rkleib.android.playground.MainActivity;
 import com.rkleib.android.playground.R;
+import com.rkleib.android.playground.boardView.BoardViewActivity;
 import com.rkleib.android.playground.dialog.DialogBasicActivity;
 
 import java.util.ArrayList;
@@ -76,6 +77,14 @@ public class MainDrawerActivity extends AppCompatActivity {
                             break;
                     }
                 }
+                if (groupPosition == 1) {
+                    switch (childPosition) {
+                        case 0:
+                            Intent intent = new Intent(MainDrawerActivity.this, BoardViewActivity.class);
+                            startActivity(intent);
+                            break;
+                    }
+                }
 
                 return false;
             }
@@ -103,7 +112,7 @@ public class MainDrawerActivity extends AppCompatActivity {
         listDataHeader.add(item1);
 
         ExpandedMenuModel item2 = new ExpandedMenuModel();
-        item2.setIconName("heading2");
+        item2.setIconName("BoardView");
         item2.setIconImg(android.R.drawable.ic_delete);
         listDataHeader.add(item2);
 
@@ -116,13 +125,12 @@ public class MainDrawerActivity extends AppCompatActivity {
         List<String> dialog = new ArrayList<String>();
         dialog.add("Dialog Basic");
 
-        List<String> heading2 = new ArrayList<String>();
-        heading2.add("Submenu of item 2");
-        heading2.add("Submenu of item 2");
-        heading2.add("Submenu of item 2");
+        // Adding child data
+        List<String> boardView = new ArrayList<String>();
+        boardView.add("BoardView");
 
         listDataChild.put(listDataHeader.get(0), dialog);// Header, Child data
-        listDataChild.put(listDataHeader.get(1), heading2);
+        listDataChild.put(listDataHeader.get(1), boardView);// Header, Child data
 
     }
 
