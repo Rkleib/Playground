@@ -22,13 +22,21 @@ import java.util.Objects;
 
 public class DialogCustomActivity extends AppCompatActivity {
 
+    TextInputEditText mEtUsername;
+    TextInputEditText mEtEmail;
+    TextInputEditText mEtPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog_custom);
 
-        TextInputLayout mTiName = findViewById(R.id.ti_name);
-        TextInputEditText mEtName = findViewById(R.id.et_name);
+        TextInputLayout mTiUsername = findViewById(R.id.ti_username);
+        TextInputLayout mTiEmail = findViewById(R.id.ti_email);
+        TextInputLayout mTiPassword = findViewById(R.id.ti_password);
+        mEtUsername = findViewById(R.id.et_username);
+        mEtEmail = findViewById(R.id.et_email);
+        mEtPassword = findViewById(R.id.et_password);
         MaterialButton mBtnSimpan = findViewById(R.id.btn_show_dialog);
 
         mBtnSimpan.setOnClickListener(new View.OnClickListener() {
@@ -40,21 +48,21 @@ public class DialogCustomActivity extends AppCompatActivity {
     }
 
     private void showDialogCustom() {
-        AlertDialog.Builder dialogKondisi = new AlertDialog.Builder(this);
+        final AlertDialog.Builder dialogKondisi = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
-        @SuppressLint("InflateParams") View dialogView = inflater.inflate(R.layout.dialog_custom, null);
+        @SuppressLint("InflateParams") final View dialogView = inflater.inflate(R.layout.dialog_custom, null);
 
         dialogKondisi.setView(dialogView);
         dialogKondisi.setCancelable(true);
         dialogKondisi.setIcon(R.mipmap.ic_launcher);
 
-        TextInputLayout mTiUsername = findViewById(R.id.ti_username);
-        TextInputLayout mTiEmail = findViewById(R.id.ti_email);
-        TextInputLayout mTiPassword = findViewById(R.id.ti_password);
-        TextInputEditText mEtUsername = findViewById(R.id.et_username);
-        TextInputEditText mEtEmail = findViewById(R.id.et_email);
-        TextInputEditText mEtPassword = findViewById(R.id.et_password);
-        MaterialButton mBtnSimpan = findViewById(R.id.btn_simpan);
+        TextInputLayout mTiSetUsername = dialogView.findViewById(R.id.ti_username);
+        TextInputLayout mTiSetEmail = dialogView.findViewById(R.id.ti_email);
+        TextInputLayout mTiSetPassword = dialogView.findViewById(R.id.ti_password);
+        final TextInputEditText mEtSetUsername = dialogView.findViewById(R.id.et_username);
+        final TextInputEditText mEtSetEmail = dialogView.findViewById(R.id.et_email);
+        final TextInputEditText mEtSetPassword = dialogView.findViewById(R.id.et_password);
+        MaterialButton mBtnSetSimpan = dialogView.findViewById(R.id.btn_set_simpan);
         Toolbar mToolbar = dialogView.findViewById(R.id.toolbar);
 
         setSupportActionBar(mToolbar);
@@ -65,8 +73,18 @@ public class DialogCustomActivity extends AppCompatActivity {
         mActionBar.setDisplayHomeAsUpEnabled(false);
         mActionBar.setTitle("Tambah Kondisi Promo");
 
-        AlertDialog alertDialog = dialogKondisi.create();
+        final AlertDialog alertDialog = dialogKondisi.create();
         alertDialog.show();
         Objects.requireNonNull(alertDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        mBtnSetSimpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mEtUsername.setText(mEtSetUsername.getText().toString().trim());
+                mEtEmail.setText(mEtSetEmail.getText().toString().trim());
+                mEtPassword.setText(mEtSetPassword.getText().toString().trim());
+                alertDialog.dismiss();
+            }
+        });
     }
 }

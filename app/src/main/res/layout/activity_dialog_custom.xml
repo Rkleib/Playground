@@ -49,19 +49,19 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ti_name"
+            android:id="@+id/ti_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginTop="16dp"
-            android:hint="Name"
-            android:enabled="false"
+            android:hint="Username"
+            android:focusable="false"
             app:hintEnabled="true"
             app:errorEnabled="true"
             tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_name"
+                android:id="@+id/et_username"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="text" />
@@ -74,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:enabled="false"
+            android:focusable="false"
             app:hintEnabled="true"
             app:errorEnabled="true"
             tools:ignore="HardcodedText">
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="Password"
-            android:enabled="false"
+            android:focusable="false"
             app:hintEnabled="true"
             app:errorEnabled="true"
             app:endIconMode="password_toggle"
