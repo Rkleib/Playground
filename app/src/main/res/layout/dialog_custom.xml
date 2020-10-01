@@ -44,18 +44,19 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/ti_username"
+                    android:id="@+id/ti_username_dialog"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_marginTop="6dp"
                     app:errorEnabled="true"
+                    app:errorTextColor="@android:color/holo_red_light"
                     android:hint="Username"
                     app:hintEnabled="true"
                     tools:ignore="HardcodedText">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_username"
+                        android:id="@+id/et_username_dialog"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -68,9 +69,10 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/ti_email"
+                    android:id="@+id/ti_email_dialog"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:errorTextColor="@android:color/holo_red_light"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_marginTop="6dp"
                     app:errorEnabled="true"
@@ -79,7 +81,7 @@
                     tools:ignore="HardcodedText">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_email"
+                        android:id="@+id/et_email_dialog"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
@@ -91,9 +93,10 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/ti_password"
+                    android:id="@+id/ti_password_dialog"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:errorTextColor="@android:color/holo_red_light"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_marginTop="6dp"
                     android:hint="Password"
@@ -103,7 +106,7 @@
                     tools:ignore="HardcodedText">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_password"
+                        android:id="@+id/et_password_dialog"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:imeOptions="flagNoExtractUi"
