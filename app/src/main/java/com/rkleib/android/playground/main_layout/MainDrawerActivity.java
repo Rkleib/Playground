@@ -31,6 +31,7 @@ import com.rkleib.android.playground.MainActivity;
 import com.rkleib.android.playground.R;
 import com.rkleib.android.playground.boardView.BoardViewActivity;
 import com.rkleib.android.playground.dialog.DialogBasicActivity;
+import com.rkleib.android.playground.dialog.DialogCustomActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -74,6 +75,10 @@ public class MainDrawerActivity extends AppCompatActivity {
                         case 0:
                             Intent intent = new Intent(MainDrawerActivity.this, DialogBasicActivity.class);
                             startActivity(intent);
+                            break;
+                        case 1:
+                            Intent intent1 = new Intent(MainDrawerActivity.this, DialogCustomActivity.class);
+                            startActivity(intent1);
                             break;
                     }
                 }
@@ -122,11 +127,12 @@ public class MainDrawerActivity extends AppCompatActivity {
         listDataHeader.add(item3);
 
         // Adding child data
-        List<String> dialog = new ArrayList<String>();
+        List<String> dialog = new ArrayList<>();
         dialog.add("Dialog Basic");
+        dialog.add("Dialog Custom");
 
         // Adding child data
-        List<String> boardView = new ArrayList<String>();
+        List<String> boardView = new ArrayList<>();
         boardView.add("BoardView");
 
         listDataChild.put(listDataHeader.get(0), dialog);// Header, Child data

@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".boardView.BoardViewActivity"></activity>
+        <activity
+            android:name=".dialog.DialogCustomActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomNoActionBarTranslucent"></activity>
+        <activity android:name=".boardView.BoardViewActivity" />
         <activity
             android:name=".dialog.DialogBasicActivity"
             android:label="@string/app_name"

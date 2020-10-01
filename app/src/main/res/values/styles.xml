@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -8,7 +8,7 @@
     </style>
 
     <!-- #.START THEME APLIKASI -->
-    <style name="CustomNoActionBar" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="CustomNoActionBar" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowBackground">@android:color/white</item>
         <item name="windowActionBar">true</item>
         <item name="windowActionModeOverlay">true</item>
@@ -21,19 +21,19 @@
     <!-- #.END THEME APLIKASI -->
 
     <!-- #.START THEME APLIKASI -->
-    <style name="CustomNoActionBarTranslucent" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="CustomNoActionBarTranslucent" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowBackground">@android:color/white</item>
         <item name="windowActionBar">true</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="actionModeBackground">@color/white</item>
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
     <!-- #.END THEME APLIKASI -->
 
-    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="CustomAlertDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="android:windowBackground">@drawable/bg_alert_dialog</item>
     </style>
 
