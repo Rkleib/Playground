@@ -1,15 +1,16 @@
 package com.rkleib.android.playground;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 import com.google.android.material.snackbar.Snackbar;
 import com.rkleib.android.playground.main_layout.MainBottomActivity;
 import com.rkleib.android.playground.main_layout.MainDrawerActivity;
+import com.rkleib.android.playground.main_layout.MainNormalActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
         mCvNormalLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                comingSoon();
+                Intent intent = new Intent(MainActivity.this, MainNormalActivity.class);
+                startActivity(intent);
             }
         });
 
